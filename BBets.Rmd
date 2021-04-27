@@ -124,10 +124,14 @@ saveBank[j] = bank
 hist(saveBank)
 
 ```
+
+Running 1000 loops.  
+
 ```{r}
 favstats(saveBank)
 ```
-
+  
+Maximum lost is 161 dollars and the maximum gain is 196. The average is a gain of 13.  
 
 ```{r}
 sortedBank <- sort(saveBank)
@@ -140,4 +144,14 @@ The lower confidence interval that Mr.j would lose `r lcl` and the upper confide
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If professor Brownlow is consistantly making or losing money how could he change his payout so that his profits center on zero?  Also discuss what size his class should be in order to have his current scheme balance at zero profit.!-->
+
+1. What are the fair odds for a bet on matching birthdays in a 35 person class.   
+4.25 to 1
+2. For what size class is a 2:1 odds bet fair.  
+28 students  
+3. How much money would Brownlow be expected to end up with if the bets went as described.  
+$196
+
+
+
 
