@@ -50,7 +50,7 @@ loseAmount= 4.25
 
 test = vector('numeric')
 saveBank=vector('numeric')
-for (j in 1:20){
+for (j in 1:30){
   bank=0
 for(i in 1:637){
 test = sample(URN, size=classSize, replace=TRUE)
@@ -61,6 +61,13 @@ saveBank[j] = bank
 hist(saveBank)
 
 ```
+
+For Mr.Brown to have a fair game he would have to lose 4.25. 
+
+```{r}
+favstats(saveBank)
+``` 
+On average that Mr.J would make is $18 while the most the would he lose is $73. 
 
 # What size of class makes the 2:1 bet fair?  
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
@@ -73,7 +80,7 @@ loseAmount= 4.25
 
 test = vector('numeric')
 saveBank=vector('numeric')
-for (j in 1:20){
+for (j in 1:30){
   bank=0
 for(i in 1:637){
 test = sample(URN, size=classSize, replace=TRUE)
@@ -84,7 +91,9 @@ saveBank[j] = bank
 hist(saveBank)
 
 ```
-
+```{r}
+favstats(saveBank)
+```
 
 # In the class and payoff as described what is a 95% confidence interval for Brownlow's earnings?
   
