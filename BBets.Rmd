@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 require(tidyverse)
 require(tidyverse)
 require(knitr)
+require(mosaic)
 ```
 
 
@@ -67,7 +68,7 @@ For Mr.Brown to have a fair game he would have to lose 4.25.
 ```{r}
 favstats(saveBank)
 ``` 
-On average that Mr.J would make is $18 while the most the would he lose is $73. 
+On average that Mr.J would make is $18 while the most the would he lose is $72. The maximum amount he can make is $101.5.
 
 # What size of class makes the 2:1 bet fair?  
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
@@ -76,7 +77,7 @@ On average that Mr.J would make is $18 while the most the would he lose is $73.
 ```{r}
 classSize = 28
 winAmount=1
-loseAmount= 4.25
+loseAmount= 2.00
 
 test = vector('numeric')
 saveBank=vector('numeric')
@@ -91,14 +92,50 @@ saveBank[j] = bank
 hist(saveBank)
 
 ```
+  
+To make this a fair game you would need around 28 students.  
+
+
+
 ```{r}
 favstats(saveBank)
 ```
-
+The average student would lose $18 while the max they can make is $55. The most a student can lose is 116.
 # In the class and payoff as described what is a 95% confidence interval for Brownlow's earnings?
   
 <!--Explain and display your method of coming up with a 95% confidence interval of  professor Brownlows winnings (or losings)-->
 
+
+```{r}
+classSize = 35
+winAmount=1
+loseAmount= 4.25
+
+test = vector('numeric')
+saveBank=vector('numeric')
+for (j in 1:1000){
+  bank=0
+for(i in 1:637){
+test = sample(URN, size=classSize, replace=TRUE)
+ifelse(length(unique(test))==classSize, (bank=bank-loseAmount),(bank=bank+winAmount))
+saveBank[j] = bank
+}
+}
+hist(saveBank)
+
+```
+```{r}
+favstats(saveBank)
+```
+
+
+```{r}
+sortedBank <- sort(saveBank)
+lcl =sortedBank[25]
+ucl =sortedBank[975]
+print(paste(lcl,ucl))
+```
+The lower confidence interval that Mr.j would lose `r lcl` and the upper confidence would be approximately is `r ucl`
 
 # Discussion and Conclusion
 
